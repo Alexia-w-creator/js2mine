@@ -92,6 +92,7 @@ function checkBottomForm(event)
 
     let det = Determinant(matrix, size);
     console.log(det);
+    document.getElementById('result').innerHTML+='<label for="result">Определитель матрицы: </label>';
     document.getElementById('result').innerHTML+=det;
 
 }
