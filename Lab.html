@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сonstellation</title>
+    <link rel="stylesheet" href="style.css">
+    <script src = "https://d3js.org/d3.v4.min.js"></script>
+
+</head>
+<body >
+    <div id="header">Реализовать программу подсчёта определителя матрицы 2х2, 3х3, 4х4.</div>
+
+    <div id="right-block">
+        <form id="upper-form" method="post">
+            <label for="dimension">Размерность матрицы</label>
+
+            <!-- <input type="text" id="dimension" name="dimension"> -->
+            
+                
+                <select id="dimension" name="dimension">
+                  <option value="">--</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                </select>
+              
+            <input class="button" type="submit" name="submit" value="Далее"><br>
+
+            <strong>
+                <span id="error"></span><br>
+            </strong>
+            
+        </form>
+
+        <form id="bottom-form" method="post">
+            <div id="matrix"></div>
+            <p></p>
+            <input class="button" type="submit" name="submit" value="Вычислить определитель">
+            <hr>
+            <label for="result">Определитель матрицы: </label>
+            <div  id="result"></div>
+            
+        </form>
+
+    </div>
+
+    <script src="Lab.js"></script>
+</body>
+</html>
