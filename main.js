@@ -5,15 +5,14 @@ let size=0;
 function checkUpperForm(event)
 {
     event.preventDefault();
-    // size=document.getElementById('upper-form').dimension.value;
     size=document.getElementById('upper-form').dimension.value;
     console.log(size);
-    if(size=="")
-        document.getElementById('error').innerHTML="Заполните поле";
-    else
-    {
-        document.getElementById('error').innerHTML="";
-    }
+    // if(size=="")
+    //     document.getElementById('error').innerHTML="Заполните поле";
+    // else
+    // {
+    //     document.getElementById('error').innerHTML="";
+    // }
 
     let htmlText=""
 
@@ -22,48 +21,66 @@ function checkUpperForm(event)
         htmlText+='<div class="lines">'
         for(let j=0;j<size;j++)
         {
-            htmlText+='<input type="text" class="cell" name="cell" value="0">'
+            v = getRandom(1, 100);
+            htmlText+='<input type="text" class="cell" name="cell" value="'
+            htmlText+=v.toFixed(0);
+            htmlText+='">';
         }
 
         htmlText+='</div>'
     }
 
-    document.getElementById('matrix').setHTML(htmlText)
+    document.getElementById('matrix').innerHTML+=htmlText
 }
 
-// Получение матрицы без i-й строки и j-го столбца
-function GetMatr(mas, p, i, j, m) {
+function getRandom(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+//Получение матрицы без i-й строки и j-го столбца
+function GetMatr(matr, p, i, j, n) {
     let ki, kj, di, dj;
     di = 0;
-    for (ki = 0; ki < (m - 1); ki++) { // проверка индекса строки
+    
+    for (ki = 0; ki < (n - 1); ki++) 
+    { 
         if (ki == i) di = 1;
         dj = 0;
-        for (kj = 0; kj < m - 1; kj++) { // проверка индекса столбца
+        
+        for (kj = 0; kj < n - 1; kj++) 
+        { 
             if (kj == j) dj = 1;
-            p[ki][kj] = mas[ki + di][kj + dj];
+            p[ki][kj] = matr[ki + di][kj + dj];
         }
     }
 }
-// Рекурсивное вычисление определителя
-function Determinant(mas, m) {
-    let i, j, d, k, n;
+
+//вычисление определителя
+function Determinant(matr, n) {
+    let d, k, m;
     let p = [];
-    for (i = 0; i < m; i++)
+
+    for (let i = 0; i < n; i++)
         p[i] = [];
-    j = 0; d = 0;
-    k = 1; //(-1) в степени i
-    n = m - 1;
-    if (m == 2) {
-        d = mas[0][0] * mas[1][1] -(mas[1][0] * mas[0][1]);
+
+    d = 0;
+    k = 1;
+    m = n - 1;
+
+    if (n == 2) 
+    {
+        d = matr[0][0] * matr[1][1] -(matr[1][0] * matr[0][1]);
         return(d);
     }
-    if (m > 2) {
-        for (i = 0; i < m; i++) {
-            GetMatr(mas, p, i, 0, m);
-            d = d + k * mas[i][0] * Determinant(p, n);
+    if (n > 2) 
+    {
+        for (let i = 0; i < n; i++) {
+            GetMatr(matr, p, i, 0, n);
+            d = d + k * matr[i][0] * Determinant(p, m);
             k = -k;
         }
     }
+
     return(d);
 }
 

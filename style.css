@@ -16,7 +16,8 @@
 }
 
 body {
-    background: url(https://foni.club/uploads/posts/2023-01/1672838839_foni-club-p-oboi-iz-dorami-blagoslovenie-nebozhitelei-9.jpg);
+    /* background: url(https://i.artfile.me/wallpaper/14-04-2022/1280x800/anime-the-husky-and-his-white-cat-shizun-1603444.jpg); */
+    background: url(background.jpg);
     margin: 0;
     overflow: auto;
 }
@@ -33,6 +34,7 @@ body {
 
 #upper-form {
     margin: 30px;
+    /* color: #dccece; */
     color: #000000;
 }
 
@@ -62,7 +64,8 @@ body {
 }
 
 #result{
-    color:#151515;
+    /* color:#e4dddd; */
+    color: #020202;
     /* background-color:aliceblue */
 }
 
